@@ -22,7 +22,11 @@ app.use("/api/products", products_routes);
 
 const start = async () => {
     try {
-        await connectDB(process);
+        // console.log("MongoDB RUL type:", typeof process.env.MONGODB_URL);
+        // console.log("MongoDB URL value:", process.env.MONGODB_URL);
+        
+        
+        await connectDB(process.env.MONGODB_URL);
         app.listen(PORT, () => {
             console.log(`${PORT} Yes I am connected`);
         });

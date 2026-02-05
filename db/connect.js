@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 const { options } = require("../routes/products");
 
-uri = "";
-
 const connectDB = async (uri) => {
 
     try {
