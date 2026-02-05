@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 
@@ -20,7 +22,7 @@ app.use("/api/products", products_routes);
 
 const start = async () => {
     try {
-        await connectDB();
+        await connectDB(process);
         app.listen(PORT, () => {
             console.log(`${PORT} Yes I am connected`);
         });
