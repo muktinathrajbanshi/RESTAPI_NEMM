@@ -24,6 +24,11 @@ const getAllProducts = async (req, res) => {
         apiData = apiData.sort(sortFix);   
     }
 
+     if (select) {
+        // let selectFix = select.replace(",", " ");
+        let selectFix = select.split(",").join(" ");
+        apiData = apiData.select(selectFix);   
+    }
 
        console.log(queryObject);
 
@@ -32,7 +37,7 @@ const getAllProducts = async (req, res) => {
 };
 
 const getAllProductsTesting = async (req, res) => {
-    const myData = await Product.find( req.query ).select("name");
+    const myData = await Product.find( req.query ).select("name company");
 
     res.status(200).json({ myData });
 };
