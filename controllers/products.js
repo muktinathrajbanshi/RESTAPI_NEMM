@@ -35,10 +35,12 @@ const getAllProducts = async (req, res) => {
 
     let skip = (page - 1) * limit;
 
+    apiData = apiData.skip(skip).limit(limit);
+
        console.log(queryObject);
 
     const myData = await apiData;
-    res.status(200).json({ myData });
+    res.status(200).json({ myData, nbHits: myData.length });
 };
 
 const getAllProductsTesting = async (req, res) => {
