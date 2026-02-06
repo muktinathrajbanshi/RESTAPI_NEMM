@@ -2,7 +2,7 @@ const Product = require("../model/product");
 
 const getAllProducts = async (req, res) => {
 
-    const { company, name, featured, sort } = req.query;
+    const { company, name, featured, sort, select } = req.query;
     const queryObject = {};
 
     if (company) {
@@ -32,7 +32,7 @@ const getAllProducts = async (req, res) => {
 };
 
 const getAllProductsTesting = async (req, res) => {
-    const myData = await Product.find( req.query ).sort("name -price");
+    const myData = await Product.find( req.query ).select("name");
 
     res.status(200).json({ myData });
 };
